@@ -7,5 +7,8 @@
 
 import Foundation
 
-struct
+struct Car: Decodable {
+    let name: String
+    let year: Int
+}
 

@@ -7,13 +7,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        decodeCar()
     }
 
+    private func decodeCar() {
+        let json = """
+        {
+            "name": "Toyota Supra",
+            "year": 2022
+        }
+        """
 
+        let data = Data(json.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let car = try decoder.decode(Car.self, from: data)
+
+            print("Автомобиль: \(car.name)")
+            print("Год выпуска: \(car.year)")
+        } catch {
+            print("Ошибка декодирования: \(error)")
+        }
+    }
 }
 
