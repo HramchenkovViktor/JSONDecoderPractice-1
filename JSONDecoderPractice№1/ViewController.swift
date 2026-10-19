@@ -42,7 +42,7 @@ final class ViewController: UIViewController {
             let response = try decoder.decode(CarResponse.self, from: data)
 
             for car in response.cars {
-                print("Автомобиль: \(car.name), год: \(car.name)")
+                print("Автомобиль: \(car.name), год: \(car.year)")
             }
         } catch {
             print("Ошибка декодирования: \(error)")
