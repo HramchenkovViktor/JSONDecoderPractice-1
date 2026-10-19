@@ -12,3 +12,6 @@ struct Car: Decodable {
     let year: Int
 }
 
+struct CarResponse: Decodable {
+    let cars: [Car]
+}

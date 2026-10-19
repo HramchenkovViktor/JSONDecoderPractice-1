@@ -17,20 +17,33 @@ final class ViewController: UIViewController {
 
     private func decodeCar() {
         let json = """
-        {
-            "name": "Toyota Supra",
-            "year": 2022
-        }
-        """
+    {
+        "cars": [
+            {
+                "name": "Toyota Supra",
+                "year": 2022
+            },
+            {
+                "name": "Ford Mustang",
+                "year": 2023
+            },
+            {
+                "name": "Nissan GT-R",
+                "year": 2021
+            }
+        ]
+    }
+    """
 
         let data = Data(json.utf8)
         let decoder = JSONDecoder()
 
         do {
-            let car = try decoder.decode(Car.self, from: data)
+            let response = try decoder.decode(CarResponse.self, from: data)
 
-            print("Автомобиль: \(car.name)")
-            print("Год выпуска: \(car.year)")
+            for car in response.cars {
+                print("Автомобиль: \(car.name), год: \(car.name)")
+            }
         } catch {
             print("Ошибка декодирования: \(error)")
         }
